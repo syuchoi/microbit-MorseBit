@@ -96,7 +96,6 @@ input.onButtonPressed(Button.AB, function () {
             for (let j = 0; j < finalMessage.length; j += 18) {
                 const chunk = finalMessage.slice(j, j + 18);
                 radio.sendString("" + chunk);
-                OLED.writeStringNewLine(j + ": " + chunk)
             }
 radio.sendString("%DONE%")
             OLED.writeStringNewLine("Sended.")
@@ -245,15 +244,15 @@ let isDeleteMode = false
 let manualMod = 0
 let currentMod = 0
 let radio2 = 0
-let isMute = false
-let result = ""
-let morseInput = ""
-let currentTime = 0
-let finalMessage = ""
-let index4 = 0
-let morse = ""
-let engText = ""
 let morseText: string[] = []
+let engText = ""
+let morse = ""
+let index4 = 0
+let finalMessage = ""
+let currentTime = 0
+let morseInput = ""
+let result = ""
+let isMute = false
 let callSign = convertToText(control.deviceName().toUpperCase())
 radio2 = 0
 currentMod = 0
