@@ -28,7 +28,7 @@ input.onButtonPressed(Button.A, function () {
                     finalMessage = finalMessage.slice(0, -1)
                 } else {
                     morseInput = morseInput.slice(0, -1)
-                    finalMorse = morseInput
+finalMorse = morseInput
                 }
             }
         } else {
@@ -41,11 +41,11 @@ input.onButtonPressed(Button.A, function () {
             }
         }
     } else {
-
+    	
     }
     update()
 })
-function sndPlay(bool: boolean) {
+function sndPlay (bool: boolean) {
     if (!(isMute)) {
         if (bool) {
             music.playTone(784, music.beat(BeatFraction.Eighth) * 3)
@@ -54,7 +54,7 @@ function sndPlay(bool: boolean) {
         }
     }
 }
-function eng2morse(text: string) {
+function eng2morse (text: string) {
     morseText = []
     for (let char of text) {
         index = alphabet.indexOf(char)
@@ -98,7 +98,7 @@ input.onButtonPressed(Button.AB, function () {
                 radio.sendString("" + chunk);
                 OLED.writeStringNewLine(j + ": " + chunk)
             }
-            radio.sendString("%DONE%")
+radio.sendString("%DONE%")
             OLED.writeStringNewLine("Sended.")
             morseInput = eng2morse(finalMessage)
             basic.pause(2000)
@@ -112,7 +112,6 @@ input.onButtonPressed(Button.AB, function () {
         update()
     } else if (currentMod == 3) {
         currentMod = 1
-        music.stopAllSounds()
         update()
     } else {
         OLED.clear()
@@ -152,11 +151,11 @@ input.onButtonPressed(Button.B, function () {
             finalMorse = morseInput
         }
     } else {
-
+    	
     }
     update()
 })
-function update() {
+function update () {
     if (currentMod == 0) {
         if (radio2 < 0) {
             radio2 = 255
@@ -196,18 +195,18 @@ function update() {
         }
         OLED.writeStringNewLine(">> " + YN)
     } else {
-
+    	
     }
 }
 // trim 빼야하나
-function list2string(str_list: any[]) {
+function list2string (str_list: any[]) {
     result = ""
     for (let s of str_list) {
         result = "" + result + s + " "
     }
     finalMessage = result.trim();
 }
-function morsePlayer(text: string) {
+function morsePlayer (text: string) {
     for (let i = 0; i <= text.length; i++) {
         if (text.charAt(i) == ".") {
             sndPlay(false)
@@ -219,7 +218,7 @@ function morsePlayer(text: string) {
         music.rest(music.beat(BeatFraction.Eighth))
     }
 }
-function morse2eng(text: string) {
+function morse2eng (text: string) {
     morseCode = text
     index3 = morseList.indexOf(morseCode)
     if (index3 != -1) {
@@ -246,15 +245,15 @@ let isDeleteMode = false
 let manualMod = 0
 let currentMod = 0
 let radio2 = 0
-let morseText: string[] = []
-let engText = ""
-let morse = ""
-let index4 = 0
-let finalMessage = ""
-let currentTime = 0
-let morseInput = ""
-let result = ""
 let isMute = false
+let result = ""
+let morseInput = ""
+let currentTime = 0
+let finalMessage = ""
+let index4 = 0
+let morse = ""
+let engText = ""
+let morseText: string[] = []
 let callSign = convertToText(control.deviceName().toUpperCase())
 radio2 = 0
 currentMod = 0
@@ -263,84 +262,76 @@ isDeleteMode = false
 isMute = false
 music.setTempo(125)
 messageTemplate = [
-    "CQ",
-    "DE",
-    callSign,
-    "K",
-    "R",
-    "BT",
-    "GA",
-    "GM",
-    "GE",
-    "DR",
-    "OM",
-    "TNX",
-    "FER",
-    "UR",
-    "CALL",
-    "RST",
-    "599",
-    "LOW",
-    "ES",
-    "HW?",
-    "AR",
-    "KN",
-    "HI",
-    "CU AGN",
-    "73",
-    "TU",
-    "E"
+"CQ",
+"DE",
+callSign,
+"K",
+"R",
+"BT",
+"GA",
+"GM",
+"GE",
+"DR",
+"OM",
+"TNX",
+"FER",
+"UR",
+"CALL",
+"RST",
+"599",
+"LOW",
+"ES",
+"HW?",
+"AR",
+"KN",
+"HI",
+"CU AGN",
+"73",
+"TU",
+"E"
 ]
 morseList = [
-    ".-",
-    "-...",
-    "-.-.",
-    "-..",
-    ".",
-    "..-.",
-    "--.",
-    "....",
-    "..",
-    ".---",
-    "-.-",
-    ".-..",
-    "--",
-    "-.",
-    "---",
-    ".--.",
-    "--.-",
-    ".-.",
-    "...",
-    "-",
-    "..-",
-    "...-",
-    ".--",
-    "-..-",
-    "-.--",
-    "--..",
-    "-----",
-    ".----",
-    "..---",
-    "...--",
-    "....-",
-    ".....",
-    "-....",
-    "--...",
-    "---..",
-    "----.",
-    "..--.."
+".-",
+"-...",
+"-.-.",
+"-..",
+".",
+"..-.",
+"--.",
+"....",
+"..",
+".---",
+"-.-",
+".-..",
+"--",
+"-.",
+"---",
+".--.",
+"--.-",
+".-.",
+"...",
+"-",
+"..-",
+"...-",
+".--",
+"-..-",
+"-.--",
+"--..",
+"-----",
+".----",
+"..---",
+"...--",
+"....-",
+".....",
+"-....",
+"--...",
+"---..",
+"----.",
+"..--.."
 ]
 alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?"
 OLED.init(128, 64)
 OLED.writeStringNewLine("Radio Group: " + radio2)
-basic.forever(function () {
-    if (currentMod == 0) {
-        basic.showNumber(radio2)
-    }
-    if (currentMod == 1) {
-        basic.showString(alphabet.charAt(index3))
-    }
-})
 basic.forever(function () {
     if (currentMod == 1) {
         // 제발 버그 죽어

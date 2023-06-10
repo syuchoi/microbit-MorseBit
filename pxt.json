@@ -1,6 +1,5 @@
 {
     "name": "morse-final",
-    "version": "1.0.0",
     "description": "",
     "dependencies": {
         "core": "*",
@@ -28,5 +27,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }
