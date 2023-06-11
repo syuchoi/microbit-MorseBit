@@ -99,7 +99,6 @@ input.onButtonPressed(Button.AB, function () {
             }
 radio.sendString("%DONE%")
             OLED.writeStringNewLine("Sended.")
-            morseInput = eng2morse(finalMessage)
             basic.pause(2000)
         }
         listcount = 0
@@ -244,15 +243,15 @@ let isDeleteMode = false
 let manualMod = 0
 let currentMod = 0
 let radio2 = 0
-let morseText: string[] = []
-let engText = ""
-let morse = ""
-let index4 = 0
-let finalMessage = ""
-let currentTime = 0
-let morseInput = ""
-let result = ""
 let isMute = false
+let result = ""
+let morseInput = ""
+let currentTime = 0
+let finalMessage = ""
+let index4 = 0
+let morse = ""
+let engText = ""
+let morseText: string[] = []
 let callSign = convertToText(control.deviceName().toUpperCase())
 radio2 = 0
 currentMod = 0
